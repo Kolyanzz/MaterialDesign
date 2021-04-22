@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bottom_sheet_behavior_peekheight">100dp</dimen>
+    <dimen name="bottom_sheet_line_width">25dp</dimen>
+    <dimen name="bottom_sheet_line_height">1dp</dimen>
+    <dimen name="bottom_sheet_line_margin_top">5dp</dimen>
+    <dimen name="bottom_sheet_header_margin_top">5dp</dimen>
+    <dimen name="bottom_sheet_header_padding_start">10dp</dimen>
+    <dimen name="bottom_sheet_header_padding_end">10dp</dimen>
+    <dimen name="bottom_sheet_description_padding_start">10dp</dimen>
+    <dimen name="bottom_sheet_description_padding_end">10dp</dimen>
+    <dimen name="main_layout_padding_start">10dp</dimen>
+    <dimen name="main_layout_padding_end">10dp</dimen>
+    <dimen name="main_layout_margin_bottom">50dp</dimen>
+    <dimen name="input_edit_text_corner_radius">15dp</dimen>
+    <dimen name="input_layout_margin_top">10dp</dimen>
+    <dimen name="fab_cradle_margin">8dp</dimen>
+    <dimen name="fab_cradle_rounded_corner_radius">50dp</dimen>
+    <dimen name="bottom_navigation_layout_margin">8dp</dimen>
+</resources>
