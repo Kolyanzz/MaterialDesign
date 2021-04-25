@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ChipsGroupSingleLinesAndSelection">
+        <item name="singleLine">true</item>
+        <item name="singleSelection">true</item>
+        <item name="android:layout_marginTop">80dp</item>
+    </style>
+
+    <style name="Chip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:textColor">@color/white</item>
+        <item name="checkedIconTint">@color/white</item>
+    </style>
+
+</resources>
