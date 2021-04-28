@@ -10,4 +10,8 @@
     <string name="description_intent_to_watch_video_on_youtube">Контент содержит видео, давайте посмотрим его на YouTube?</string>
     <string name="stay_here">Останусь тут</string>
     <string name="ok_go">Да, давайте</string>
+    <string name="where_send">Куда отправим?</string>
+    <string name="empty_link">Ссылка пуста :(</string>
+    <string name="choose_date">Выберете дату</string>
+    <string name="calendar_instruction">Выберете дату между 16.01.1995 и сегодняшним днём </string>
 </resources>

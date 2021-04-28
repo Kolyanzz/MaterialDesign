@@ -15,7 +15,7 @@ import java.util.*
 
 private const val DAY_PATTERN = "yyyy-MM-dd"
 
-class CurrentDayPhotoViewModel(
+class YesterdayPhotoViewModel(
     private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
     private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
 ) :
@@ -64,7 +64,14 @@ class CurrentDayPhotoViewModel(
     }
 
 
-    private fun convertDateToString(): String = ""
+    private fun convertDateToString(): String {
+
+        Calendar.getInstance().apply {
+            add(Calendar.DATE, -1)
+            return time.getNormalDate()
+        }
+
+    }
 
     private fun Date.getNormalDate() =
         android.text.format.DateFormat.format(DAY_PATTERN, this).toString()

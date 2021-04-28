@@ -3,11 +3,10 @@ package com.kolumbo.materialdesign.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.kolumbo.materialdesign.R
 import com.kolumbo.materialdesign.databinding.ActivityMainBinding
 import com.kolumbo.materialdesign.view_model.MainActivityViewModel
 
-class MainActivity : AppCompatActivity(), CurrentDayPhotoFragment.ThemeCallback {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -22,13 +21,9 @@ class MainActivity : AppCompatActivity(), CurrentDayPhotoFragment.ThemeCallback 
 
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, CurrentDayPhotoFragment.getInstance()).commitNow()
+        binding.viewPagerMain.adapter = ViewPagerAdapter(supportFragmentManager)
+        binding.viewPagerMain.setCurrentItem(TODAY_FRAGMENT)
 
-    }
-
-    override fun setMyTheme(themeId: Int) {
-        model.themeId = themeId
     }
 
 }

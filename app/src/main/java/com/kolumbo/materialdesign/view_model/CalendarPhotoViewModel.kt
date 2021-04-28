@@ -11,19 +11,18 @@ import com.kolumbo.materialdesign.model.PictureOfTheDayData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 private const val DAY_PATTERN = "yyyy-MM-dd"
 
-class CurrentDayPhotoViewModel(
+class CalendarPhotoViewModel(
     private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
     private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
 ) :
     ViewModel() {
 
 
-    fun getData(): LiveData<PictureOfTheDayData> {
-        sendServerRequest(convertDateToString().also { Log.d("QWE", "getData: $it") })
+    fun getData(day: String): LiveData<PictureOfTheDayData> {
+        sendServerRequest(day.also { Log.d("QWE", "getData: $it") })
         return liveDataForViewToObserve
     }
 
@@ -62,11 +61,5 @@ class CurrentDayPhotoViewModel(
                 })
         }
     }
-
-
-    private fun convertDateToString(): String = ""
-
-    private fun Date.getNormalDate() =
-        android.text.format.DateFormat.format(DAY_PATTERN, this).toString()
 
 }
