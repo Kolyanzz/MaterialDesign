@@ -1,5 +1,6 @@
 package com.kolumbo.materialdesign.view
 
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -46,6 +47,17 @@ class CurrentDayPhotoFragment : AppCompatDialogFragment() {
     ): View {
         _binding = CurrentDayPhotoFragmentBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    private fun startAnimationFabs() {
+        ValueAnimator.ofFloat(0f, 360f).apply {
+            startDelay = 1500
+            duration = 3000
+            addUpdateListener { animator ->
+                binding.fab.rotation = animator.animatedValue as Float
+                binding.fabWiki.rotation = -(animator.animatedValue as Float)
+            }
+        }.start()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
