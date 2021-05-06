@@ -7,13 +7,16 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@+id/start"
+        motion:layoutDuringTransition="honorRequest"
         motion:duration="1000">
+
         <OnClick motion:targetId="@+id/fabWiki" />
 
         <OnSwipe
             motion:dragDirection="dragDown"
             motion:touchAnchorId="@id/input_layout"
             motion:touchAnchorSide="bottom" />
+
 
     </Transition>
 

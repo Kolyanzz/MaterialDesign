@@ -14,4 +14,6 @@
     <string name="empty_link">Ссылка пуста :(</string>
     <string name="choose_date">Выберете дату</string>
     <string name="calendar_instruction">Выберете дату между 16.01.1995 и сегодняшним днём </string>
+    <string name="best_quality">Хорошее качество</string>
+    <string name="common_quality">Обычное качество</string>
 </resources>
