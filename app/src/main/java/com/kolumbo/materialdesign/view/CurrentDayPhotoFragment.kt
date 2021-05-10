@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -28,6 +29,7 @@ import com.kolumbo.materialdesign.model.PODServerResponseData
 import com.kolumbo.materialdesign.model.PictureOfTheDayData
 import com.kolumbo.materialdesign.view_model.CurrentDayPhotoViewModel
 import com.kolumbo.materialdesign.R
+import com.kolumbo.materialdesign.recyclerview.RecyclerViewActivity
 
 sealed class DataTypeContentResponse {
     data class Video(val type: String = "video") : DataTypeContentResponse()
@@ -79,6 +81,11 @@ class CurrentDayPhotoFragment : AppCompatDialogFragment() {
                 data =
                     Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             })
+        }
+
+        binding.next.setOnClickListener {
+            val nextIntent = Intent(context, RecyclerViewActivity::class.java)
+            startActivity(nextIntent)
         }
 
         binding.fab.setOnClickListener {

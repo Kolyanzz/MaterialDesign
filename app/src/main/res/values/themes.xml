@@ -1,27 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MyMaterialDesign" parent="AppTheme">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-        <item name="colorSurface">?colorPrimary</item>
-        <item name="chipStyle">@style/Chip</item>
-        <!-- ATTR -->
-        <item name="textInputBackground">?android:editTextBackground</item>
-    </style>
-
-    <style name="ThemeSpace.MyMaterialDesign" parent="AppTheme">
+    <style name="Theme.MyMaterialDesign" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">@color/purple_1000</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -29,17 +11,13 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-
-        <!-- Customize your theme here. -->
-        <item name="android:windowBackground">@drawable/fon</item>
-        <!-- ATTR -->
-        <item name="textInputBackground">@color/white</item>
-    </style>
-
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="chipStyle">@style/Widget.MaterialComponents.Chip.Filter</item>
         <item name="fontFamily">@font/opinion_pro</item>
-    </style>
+        <!-- Customize your theme here. -->
 
+        <item name="colorSurface">@color/purple_1000</item>
+        <!-- ATTR -->
+        <item name="textInputBackground">?android:editTextBackground</item>
+
+    </style>
 
 </resources>

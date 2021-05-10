@@ -16,4 +16,8 @@
     <string name="calendar_instruction">Выберете дату между 16.01.1995 и сегодняшним днём </string>
     <string name="best_quality">Хорошее качество</string>
     <string name="common_quality">Обычное качество</string>
+    <string name="label">Название</string>
+    <string name="buy_something">Что то купить</string>
+    <string name="description">Описание</string>
+    <string name="shop">Магазин</string>
 </resources>

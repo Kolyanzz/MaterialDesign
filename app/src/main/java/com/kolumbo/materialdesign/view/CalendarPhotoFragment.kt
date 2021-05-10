@@ -18,6 +18,7 @@ import com.kolumbo.materialdesign.R
 import com.kolumbo.materialdesign.databinding.CalendarPhotoFragmentBinding
 import com.kolumbo.materialdesign.model.PODServerResponseData
 import com.kolumbo.materialdesign.model.PictureOfTheDayData
+import com.kolumbo.materialdesign.recyclerview.RecyclerViewActivity
 import com.kolumbo.materialdesign.view_model.CalendarPhotoViewModel
 import java.util.*
 
@@ -94,6 +95,11 @@ class CalendarPhotoFragment : AppCompatDialogFragment(), DatePickerFragment.Call
                     }.show()
 
             }
+        }
+
+        binding.next.setOnClickListener {
+            val nextIntent = Intent(context, RecyclerViewActivity::class.java)
+            startActivity(nextIntent)
         }
 
     }

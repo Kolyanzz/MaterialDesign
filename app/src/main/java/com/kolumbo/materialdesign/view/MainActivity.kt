@@ -1,9 +1,13 @@
 package com.kolumbo.materialdesign.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.kolumbo.materialdesign.databinding.ActivityMainBinding
+import com.kolumbo.materialdesign.recyclerview.RecyclerViewActivity
 import com.kolumbo.materialdesign.view_model.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         binding.viewPagerMain.adapter = ViewPagerAdapter(supportFragmentManager)
         binding.viewPagerMain.setCurrentItem(TODAY_FRAGMENT)
 
+
+
+
     }
+
+
 
 }
