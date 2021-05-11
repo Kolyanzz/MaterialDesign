@@ -7,7 +7,6 @@ import com.kolumbo.materialdesign.model.ViewPagerData
 
 private const val YESTERDAY_FRAGMENT = 0
 const val TODAY_FRAGMENT = 1
-private const val CALENDAR_FRAGMENT = 2
 
 class ViewPagerAdapter(
     private val fragmentManager: FragmentManager,
@@ -18,9 +17,7 @@ class ViewPagerAdapter(
     override fun getItem(position: Int): Fragment = fragmentsData[position].second
 
     override fun getPageTitle(position: Int): CharSequence? {
-
         return fragmentsData[position].first
-
     }
 
     override fun getCount(): Int {

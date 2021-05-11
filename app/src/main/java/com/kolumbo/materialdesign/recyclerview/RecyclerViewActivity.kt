@@ -1,5 +1,4 @@
 package com.kolumbo.materialdesign.recyclerview
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.RatingBar
@@ -13,13 +12,10 @@ import com.kolumbo.materialdesign.R
 import com.kolumbo.materialdesign.databinding.RecyclerLayoutBinding
 import com.kolumbo.materialdesign.view.MainActivity
 
-
 class RecyclerViewActivity : AppCompatActivity() {
 
     lateinit var binding: RecyclerLayoutBinding
     lateinit var adapter: NoteRecyclerAdapter
-
-    private val notes: MutableList<Pair<Note, Boolean>> = mutableListOf()
 
     private var filterUp = false
 
@@ -27,18 +23,20 @@ class RecyclerViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = RecyclerLayoutBinding.inflate(layoutInflater)
 
+        title = getString(R.string.note_list)
+
         setContentView(binding.root)
 
         initRecyclerView()
 
         initClickListeners()
+
     }
 
     private fun initRecyclerView() {
         binding.recyclerView.adapter = null
 
-        fillNoteList()
-        adapter = NoteRecyclerAdapter(notes)
+        adapter = NoteRecyclerAdapter()
         binding.recyclerView.adapter = adapter
 
         ItemTouchHelper(ItemTouchHelperCallback(adapter)).apply {
@@ -53,20 +51,18 @@ class RecyclerViewActivity : AppCompatActivity() {
             val chip = view as Chip
             filterUp = !filterUp
             if (filterUp) {
-                chip.chipIcon = ContextCompat.getDrawable(
-                    this,
-                    R.drawable.ic_filter_up
-                )
-
-                notes.sortByDescending { it.first.priority }
-                adapter.notifyDataSetChanged()
-
+                chip.chipIcon = ContextCompat.getDrawable(this, R.drawable.ic_filter_up)
+                adapter.sortDataByDescending()
             } else {
                 chip.chipIcon = ContextCompat.getDrawable(this, R.drawable.ic_filter_down)
-                notes.sortBy { it.first.priority }
-                adapter.notifyDataSetChanged()
+                adapter.sortData()
             }
 
+        }
+
+        binding.back.setOnClickListener {
+            val backIntent = Intent(this, MainActivity::class.java)
+            startActivity(backIntent)
         }
 
 
@@ -86,16 +82,13 @@ class RecyclerViewActivity : AppCompatActivity() {
             val alert = MaterialAlertDialogBuilder(this).setView(layout)
                 .setPositiveButton("Сохранить") { alert, _ ->
 
-                    notes.add(
-                        Pair(
-                            Note(
-                                nameNoteEditText.text.toString(),
-                                descriptionEditText.text.toString(),
-                                priorityRatingBar.rating.toInt()
-                            ), false
+                    adapter.addNoteInList(
+                        Note(
+                            nameNoteEditText.text.toString(),
+                            descriptionEditText.text.toString(),
+                            priorityRatingBar.rating.toInt()
                         )
                     )
-                    adapter.notifyItemChanged(if (notes.size > 0) notes.size - 1 else 0)
                     alert.dismiss()
                 }
                 .setNegativeButton("Отмена") { alert, _ ->
@@ -105,28 +98,6 @@ class RecyclerViewActivity : AppCompatActivity() {
             alert.show()
 
         }
-
-        binding.back.setOnClickListener {
-            val backIntent = Intent(this, MainActivity::class.java)
-            startActivity(backIntent)
-        }
-
     }
 
-    private fun fillNoteList() {
-
-        for (i in 0..5) {
-            notes.add(
-                Pair(
-                    Note(
-                        "Дело номер: $i",
-                        "Все мы давно и хорошо знакомы с RecyclerView. Мы постоянно используем его в своих приложениях и прекрасно знаем, как работают адаптер и ViewHolder: достаточно создать макет для каждого элемента списка, который будет «надуваться». ",
-                        i
-                    ), false
-                )
-            )
-
-        }
-
-    }
 }

@@ -6,12 +6,15 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.AbsoluteSizeSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
+import android.view.*
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -83,11 +86,6 @@ class CurrentDayPhotoFragment : AppCompatDialogFragment() {
             })
         }
 
-        binding.next.setOnClickListener {
-            val nextIntent = Intent(context, RecyclerViewActivity::class.java)
-            startActivity(nextIntent)
-        }
-
         binding.fab.setOnClickListener {
 
             if (fabPressed) {
@@ -135,6 +133,17 @@ class CurrentDayPhotoFragment : AppCompatDialogFragment() {
         }
 
 
+    }
+
+    private fun setBottomBar() {
+        val contextMain = activity as MainActivity
+        contextMain.setSupportActionBar(view?.findViewById(R.id.main_bottom_bar))
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_bottom, menu)
     }
 
 
@@ -214,6 +223,23 @@ class CurrentDayPhotoFragment : AppCompatDialogFragment() {
 
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.note_list -> {
+                startActivity(Intent(context, RecyclerViewActivity::class.java))
+            }
+            R.id.pick_date -> {
+                activity!!.supportFragmentManager.beginTransaction()
+                    .add(R.id.mainFrameLayout, CalendarPhotoFragment.getInstance(), "")
+                    .addToBackStack(null)
+                    .commit()
+            }
+
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -244,8 +270,42 @@ class CurrentDayPhotoFragment : AppCompatDialogFragment() {
                     toast(getString(R.string.empty_link))
                 } else {
                     loadImage(url)
-                    binding.bottomSheet.bottomSheetDescriptionHeader.text = responseData?.title
-                    binding.bottomSheet.bottomSheetDescription.text = responseData?.explanation
+
+
+                    val header = SpannableString(responseData?.title)
+                    val explanation = SpannableString(responseData?.explanation)
+
+                    header.setSpan(
+                        AbsoluteSizeSpan(70),
+                        0,
+                        header.length,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+
+
+                    header.setSpan(
+                        ForegroundColorSpan(resources.getColor(R.color.purple_1000)),
+                        0,
+                        header.length,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+
+                    header.setSpan(
+                        StyleSpan(Typeface.BOLD),
+                        0,
+                        header.length,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+
+                    explanation.setSpan(
+                        AbsoluteSizeSpan(55),
+                        0,
+                        explanation.length,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+
+                    binding.bottomSheet.bottomSheetDescriptionHeader.text = header
+                    binding.bottomSheet.bottomSheetDescription.text = explanation
                 }
             }
             is PictureOfTheDayData.Loading -> {

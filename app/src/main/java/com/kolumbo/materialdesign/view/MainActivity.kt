@@ -28,11 +28,5 @@ class MainActivity : AppCompatActivity() {
         binding.viewPagerMain.adapter = ViewPagerAdapter(supportFragmentManager)
         binding.viewPagerMain.setCurrentItem(TODAY_FRAGMENT)
 
-
-
-
     }
-
-
-
 }

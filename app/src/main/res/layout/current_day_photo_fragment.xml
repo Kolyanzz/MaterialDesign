@@ -43,7 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/space_image_view">
 
-        <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -60,36 +60,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/space_image_view"
             app:srcCompat="@drawable/ic_wikipedia"
-            app:visibilityMode="ignore"
-            app:tint="#FFFFFF" />
+            app:tint="#FFFFFF"
+            app:visibilityMode="ignore" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
-    <include
-        android:id="@+id/bottom_sheet"
-        layout="@layout/bottom_sheet_layout" />
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="@dimen/padding_16dp"
-        android:layout_marginBottom="@dimen/padding_16dp"
-        android:backgroundTint="@color/design_default_color_primary"
-        app:srcCompat="@drawable/ic_share"
-        app:tint="#FFFFFF" />
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start|bottom"
-        android:layout_marginStart="@dimen/padding_16dp"
-        android:layout_marginBottom="@dimen/padding_16dp"
-        android:backgroundTint="@color/design_default_color_primary"
-        app:srcCompat="@drawable/ic_next"
-        app:tint="#FFFFFF" />
 
     <TextView
         android:id="@+id/shareSdQuality"
@@ -121,5 +96,30 @@
         app:layout_constraintTop_toBottomOf="@id/fab"
         tools:visibility="visible" />
 
+    <include
+        android:id="@+id/bottom_sheet"
+        layout="@layout/bottom_sheet_layout" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:visibility="visible"
+        app:layout_anchor="@id/main_bottom_bar"
+        app:srcCompat="@drawable/ic_share"
+        app:tint="#FFFFFF" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/main_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/design_default_color_primary"
+        app:fabAlignmentMode="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

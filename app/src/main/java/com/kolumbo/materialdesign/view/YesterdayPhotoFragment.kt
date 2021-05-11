@@ -18,7 +18,6 @@ import com.kolumbo.materialdesign.R
 import com.kolumbo.materialdesign.databinding.YesterdayPhotoFragmentBinding
 import com.kolumbo.materialdesign.model.PODServerResponseData
 import com.kolumbo.materialdesign.model.PictureOfTheDayData
-import com.kolumbo.materialdesign.recyclerview.RecyclerViewActivity
 import com.kolumbo.materialdesign.view_model.YesterdayPhotoViewModel
 
 
@@ -62,8 +61,6 @@ class YesterdayPhotoFragment : AppCompatDialogFragment() {
                 startActivity(Intent.createChooser(it, getString(R.string.where_send)))
             }
 
-
-
         }
 
         binding.spaceImageView.setOnClickListener {
@@ -81,11 +78,6 @@ class YesterdayPhotoFragment : AppCompatDialogFragment() {
                     }.show()
 
             }
-        }
-
-        binding.next.setOnClickListener {
-            val nextIntent = Intent(context, RecyclerViewActivity::class.java)
-            startActivity(nextIntent)
         }
 
     }

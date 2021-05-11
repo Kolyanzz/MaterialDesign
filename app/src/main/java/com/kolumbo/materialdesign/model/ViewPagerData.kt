@@ -9,6 +9,5 @@ data class ViewPagerData(
     val pairs: List<Pair<String, Fragment>> = listOf(
         Pair("Вчера", YesterdayPhotoFragment.getInstance()),
         Pair("Сегодня", CurrentDayPhotoFragment.getInstance()),
-        Pair("Выбрать день", CalendarPhotoFragment.getInstance())
     )
 )

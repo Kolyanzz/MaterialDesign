@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.kolumbo.materialdesign.R
 
-class NoteRecyclerAdapter(private val notesList: MutableList<Pair<Note, Boolean>>) :
+class NoteRecyclerAdapter(private val notesList: MutableList<Pair<Note, Boolean>> = mutableListOf()) :
     RecyclerView.Adapter<NoteRecyclerAdapter.NoteViewHolder>(), ItemTouchHelperAdapter {
 
 
@@ -22,6 +22,22 @@ class NoteRecyclerAdapter(private val notesList: MutableList<Pair<Note, Boolean>
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.bind(notesList[position].first)
+    }
+
+    fun sortDataByDescending() {
+        notesList.sortByDescending { it.first.priority }
+        notifyDataSetChanged()
+    }
+
+    fun sortData() {
+        notesList.sortBy { it.first.priority }
+        notifyDataSetChanged()
+    }
+
+    fun addNoteInList(note: Note) {
+        notesList.add(Pair(note, false))
+        notifyItemChanged(if (notesList.size > 0) notesList.size - 1 else 0)
+
     }
 
     override fun getItemCount(): Int {
@@ -62,8 +78,7 @@ class NoteRecyclerAdapter(private val notesList: MutableList<Pair<Note, Boolean>
             describeNoteTxtView.text = note.description
             priorityNoteTxtView.rating = note.priority.toFloat()
             descriptionTextView.visibility =
-                if (notesList[layoutPosition].second) View.VISIBLE else View.GONE
-
+                if (notesList[layoutPosition].second && note.description.isNotBlank()) View.VISIBLE else View.GONE
             container.setOnClickListener {
                 toggleText()
             }
@@ -85,5 +100,6 @@ class NoteRecyclerAdapter(private val notesList: MutableList<Pair<Note, Boolean>
         }
 
     }
+
 
 }
